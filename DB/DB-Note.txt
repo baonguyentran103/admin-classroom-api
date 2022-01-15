@@ -1,0 +1,67 @@
+mysql://[username]:[password]@[host]/[database name]?reconnect=true
+mysql://b5a2d28914aa40:73bfaa14@us-cdbr-east-04.cleardb.com/heroku_504b086ac68d780?reconnect=true
+
+Class
+-> ClassID
+-> Name
+-> Part
+-> Title (Details)
+-> Room (Details)
+-> LinkToJoinClass
+
+??? Exercise/Tutorial/...
+
+--------------------------------------------------------------
+User
+-> StudentID - MSSV? Giáo viên và học sinh đều có MSSV -> (username)
+-> Name
+-> AvartarURL
+-> Email 
+-> Password
+
+=> Một user ko cần bắt buộc phải có gmail, đăng nhập bằng StudentID (định danh cho mỗi student - userA) -> userA cũng có thể là teacher -> teacher cũng có studentID
+
+--------------------------------------------------------------
+
+Class_Student
+-> ClassID
+-> StudentID
+(-> Grade) 
+
+
+Class_Teacher
+-> ClassID
+-> TeacherID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Teacher
+-> TeacherID
+-> Name
+-> Avartar
+-> Email (username)
+-> Password
+
+
+
+
+
+
+
+
+
+
+
