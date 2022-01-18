@@ -16,15 +16,14 @@ module.exports = {
     },
 
     async createAdmin(data) {
+        console.log(data);
         const handlePassword = bcrypt.hashSync(data.password, 10);
         // check valiation of dateOfBirth, email, fullName in UI
         let user = {
-            UserID: data.id,
+            AdminID: data.id,
             Password: handlePassword,
             Email: data.email,
-            FullName: data.fullName,
-            DateOfBirth: (data.dateOfBirth && data.dateOfBirth.length !== 0) ? data.dateOfBirth : null,
-            AvartarURL: data.avartarURL,
+            Fullname: data.fullName,
         };
         // console.log(user);
         await adminModel.addAdmin(user);
@@ -92,7 +91,7 @@ module.exports = {
 
     async getClassDetailByUserIDandClassID(userID, classID) {
         // handle exception
-        
+
         // information for home page of class details
         const classInfo = await adminModel.getClassDetailByUserIDandClassID(userID, classID);
 
