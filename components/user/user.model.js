@@ -29,10 +29,13 @@ module.exports = {
         return row;
     },
 
-    async updateUserByID(userID, data) {
-        const rs = await db('user').where('UserID', '=', userID).update(data, ['UserID']);
-        console.log(rs);
-        return rs == 1 ? true : false;
+    async updateUserID(userID, userID2) {
+        const rs = await db('user').where('UserID', '=', userID).update('UserID', userID2);
+        return rs;
+    },
+    async updateBanUser(userID, baned) {
+        const rs = await db('user').where('UserID', '=', userID).update('Baned', baned);
+        return rs;
     },
 
     async deleteUserByID(userID) {

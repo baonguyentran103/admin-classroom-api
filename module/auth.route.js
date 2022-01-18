@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const route = express.Router();
 const jwt = require('jsonwebtoken');
 const rTokenModel = require('./model/refreshToken.model');
-const userModel = require('../components/user/user.model');
+const adminModel = require('../components/admin/admin.model');
 const { v4: uuidv4 } = require("uuid");
 route.post('/', async function(req, res, next){
     const _rToken = req.body.refreshToken;
@@ -21,7 +21,7 @@ route.post('/', async function(req, res, next){
         }
         else{
             let email = row[0].Email;
-            let user = await userModel.findUserByMail(email);
+            let user = await userModel.findAdminByMail(email);
             if(user){
                 res.json({
                     token: jwt.sign({

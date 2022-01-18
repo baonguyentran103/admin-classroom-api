@@ -13,7 +13,8 @@ const loginRouter = require('./module/passport/login.route');
 const sendMailRoute = require('./components/sendmail/sendmail.controller');
 const rTokenRouter = require('./module/auth.route');
 const passport = require('./module/passport/index');
-const joinclassRouter = require('./components/joinClass/joinClass.controller')
+const joinclassRouter = require('./components/joinClass/joinClass.controller');
+const adminRouter = require('./components/admin/admin.controller')
 const gradeStructRouter = require('./components/gradeStruct/gradeStruct.controller');
 const gradeClassRouter = require('./components/gradeClass/gradeClass.controller');
 const notificationRouter = require('./components/notification/notification.controller');
@@ -41,7 +42,8 @@ app.use('/signup', signUpRouter);
 app.use('/join-class', joinclassRouter)
 app.use('/refresh', rTokenRouter);
 app.use('/invite', sendMailRoute);
-app.use('/noti', notificationRouter)
+app.use('/noti', notificationRouter);
+app.use('/admin', adminRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
