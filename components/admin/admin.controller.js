@@ -39,7 +39,7 @@ router.post('/', async (req, res, next) => {
 /* Update user by ID */
 router.put('/:id', async (req, res, next) => {
     const userID = req.params.id;
-    const result = await adminService.updateUserByID(userID, req.body);
+    const result = await adminService.updateAdminByID(userID, req.body);
     res.json(result);
 });
 
@@ -127,6 +127,9 @@ router.delete('/:userID/class-user/:classID', async (req, res, next) => {
     const result = await adminService.deleteClassOfUser(userID, classID);
     res.json(result);
 });
+
+
+
 
 module.exports = router;
 

@@ -30,7 +30,7 @@ module.exports = {
     },
 
     async updateUserByID(adminID, data) {
-        const rs = await db('admin').where('UserID', '=', adminID).update(data, ['UserID']);
+        const rs = await db('admin').where('AdminID', '=', adminID).update('Fullname', data.Fullname);
         console.log(rs);
         return rs == 1 ? true : false;
     },

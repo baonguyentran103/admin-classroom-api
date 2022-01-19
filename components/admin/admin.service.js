@@ -36,29 +36,12 @@ module.exports = {
         return returnJson;
     },
 
-    async updateUserByID(userID, data) {
+    async updateAdminByID(userID, data) {
         let returnJson = {
             msg: 'failure',
             error: 'Something was wrong!'
         }
-
-        let currentUser = await this.getUserByID(userID);
-        if (currentUser.length === 0)
-            return returnJson;
-
-        let updatingUser = {
-            FullName: (data.fullName && data.fullName.length !== 0) ? data.fullName : currentUser[0].FullName,
-            DateOfBirth: data.dateOfBirth || currentUser[0].DateOfBirth,
-            AvartarURL: data.avartarURL || currentUser[0].AvartarURL,
-        };
-
-        let handleNewPassword;
-        if (data.newPassword) {
-            handleNewPassword = bcrypt.hashSync(data.newPassword, 10);
-            updatingUser.Password = handleNewPassword;
-        }
-        // console.log(currentUser, updatingUser);
-        if (await adminModel.updateUserByID(userID, updatingUser)) {
+        if (await adminModel.updateUserByID(userID, data)) {
             returnJson.error = '';
             returnJson.msg = 'success';
         }
