@@ -12,7 +12,7 @@ module.exports = {
 
 
     async getAllUsers() {
-        const rows = await db.select('*').from('user');
+        const rows = await db.select('*').from('user').orderBy('CreatedAt');;
         // console.log(rows.length);
         return rows;
     },
@@ -68,7 +68,7 @@ module.exports = {
         // console.log(row);
         return row;
     },
-    
+
     async getClassDetailByUserIDandClassID(userID, classID) {
         const row = await db.select(['c.*', 'cu.*'])
             .from('user as u')

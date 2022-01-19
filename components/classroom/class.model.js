@@ -1,7 +1,7 @@
 const db = require('../../utils/db');
 module.exports = {
     async getAllClasses() {
-        const rows = await db.select('*').from('class');
+        const rows = await db.select('*').from('class').orderBy('CreatedAt');;
         //console.log(rows, typeof (rows));
         return rows;
     },
@@ -43,22 +43,23 @@ module.exports = {
         //console.log(rs);
         return rs == 1 ? true : false;
     },
-    
+
     async getAllPeopleInClass(classID) {
         const rs = await db.select('*')
-        .from('class_user as cu')
-        .join('user as u', 'u.UserID', '=', 'cu.UserID')
-        .where('cu.ClassID', '=', classID);
+            .from('class_user as cu')
+            .join('user as u', 'u.UserID', '=', 'cu.UserID')
+            .where('cu.ClassID', '=', classID)
+            .orderBy('CreatedAt');
         // console.log(rs);
         return rs;
     },
     async getAllStudentInClass(classID) {
         const rs = await db.select('*')
-        .from('class_user as cu')
-        .join('user as u', 'u.UserID', '=', 'cu.UserID')
-        .join('gradestruct as g', 'g.ClassID', '=', 'cu.ClassID')
-        .where('cu.ClassID', '=', classID)
-        .where('cu.Role', 'student');
+            .from('class_user as cu')
+            .join('user as u', 'u.UserID', '=', 'cu.UserID')
+            .join('gradestruct as g', 'g.ClassID', '=', 'cu.ClassID')
+            .where('cu.ClassID', '=', classID)
+            .where('cu.Role', 'student');
         // console.log(rs);
         return rs;
     },
@@ -72,5 +73,5 @@ module.exports = {
         // console.log(rs);
         return rs;
     },
-    
+
 }

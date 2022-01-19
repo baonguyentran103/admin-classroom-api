@@ -12,7 +12,7 @@ module.exports = {
 
 
     async getAllAdmins() {
-        const rows = await db.select('*').from('admin');
+        const rows = await db.select('*').from('admin').orderBy('CreatedAt');
         // console.log(rows.length);
         return rows;
     },
