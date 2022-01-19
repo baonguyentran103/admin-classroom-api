@@ -39,14 +39,14 @@ module.exports = {
 
     async updateUserByID(userID, data) {
         let returnJson = 'Success';
-        if(data.userID !==null && data.userID.length >0 && userID != data.userID){
+        if (data.userID && data.userID.length > 0 && userID != data.userID) {
             const tmp = await this.getUserByID(data.userID);
-            if(tmp.length ===0){
+            if (tmp.length === 0) {
                 await userModel.updateUserID(userID, data.userID);
             }
             else returnJson = 'ID existed';
         }
-        else{
+        else {
             await userModel.updateBanUser(userID, data.baned);
         }
         return returnJson;
@@ -78,7 +78,7 @@ module.exports = {
 
     async getClassDetailByUserIDandClassID(userID, classID) {
         // handle exception
-        
+
         // information for home page of class details
         const classInfo = await userModel.getClassDetailByUserIDandClassID(userID, classID);
 

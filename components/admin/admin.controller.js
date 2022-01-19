@@ -31,7 +31,8 @@ router.get('/:id', async function (req, res, next) {
 
 /* Add user*/
 router.post('/', async (req, res, next) => {
-    const rs = await adminService.createUser(req.body);
+    console.log(req);
+    const rs = await adminService.createAdmin(req.body);
     res.json(rs);
 });
 
