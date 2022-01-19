@@ -3,12 +3,12 @@ const passport = require("passport"),
 const JwtStrategy = require("passport-jwt").Strategy,
  ExtractJWT = require("passport-jwt").ExtractJwt;
  const bcrypt = require('bcryptjs');
-const UserModel = require("../../components/user/user.model") 
+const AdminModel = require("../../components/admin/admin.model");
 
  passport.use(new LocalStrategy({session:false},
     async function(username, password, done){
         console.log(password);
-        const user = await UserModel.findUserByMail(username);
+        const user = await AdminModel.findAdminByMail(username);
         if (!user) {
             return done(null, false, { message: 'Incorrect username.' });
         }
@@ -16,7 +16,7 @@ const UserModel = require("../../components/user/user.model")
         if (ret === false) {
             return done(null, false, { message: 'Incorrect password.' });
         }
-        return done(null, {id: user[0].UserID, email: user[0].Email})
+        return done(null, {id: user[0].AdminID, email: user[0].Email})
 
     }    
     

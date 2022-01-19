@@ -25,7 +25,7 @@ router.get('/', async function (req, res, next) {
 /* Get users by ID */
 router.get('/:id', async function (req, res, next) {
     const userID = req.params.id;
-    const result = await adminService.getUserByID(userID);
+    const result = await adminService.getAdminByID(userID);
     res.json(result);
 });
 
